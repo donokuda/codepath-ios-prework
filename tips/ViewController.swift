@@ -15,12 +15,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
 
+    @IBOutlet weak var billView: UIView!
+    @IBOutlet weak var totalView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        totalView.alpha = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +35,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
+        if billField.text == "" {
+            UIView.animateWithDuration(0.4,
+                animations: {
+                    self.totalView.alpha = 0
+                    self.billView.center.y = 243
+                    self.totalView.center.y = 360
+                }
+            )
+        } else {
+            UIView.animateWithDuration(0.4, animations: {
+                self.totalView.alpha = 1
+                self.billView.center.y = 175
+                self.totalView.center.y = 300
+            })
+        }
+        
         var tipPercentages = [0.18, 0.2, 0.22]
         var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         
