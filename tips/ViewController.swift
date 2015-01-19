@@ -46,8 +46,8 @@ class ViewController: UIViewController {
         } else {
             UIView.animateWithDuration(0.4, animations: {
                 self.totalView.alpha = 1
-                self.billView.center.y = 175
-                self.totalView.center.y = 300
+                self.billView.center.y = 85
+                self.totalView.center.y = 215
             })
         }
         
